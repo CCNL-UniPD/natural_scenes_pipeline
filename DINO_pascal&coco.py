@@ -1,3 +1,12 @@
+"""
+Description: This script loads the Grounding DINO model and performs object detection on the PASCAL VOC/MSCOCO dataset.
+             It evaluates bounding boxes based on a set of textual prompts and computes the Intersection over Union (IoU) 
+             for filtering the detected boxes. The results are saved in a pickle file for further analysis.
+Author: Kuinan
+Date: 2024-09-01
+Version: 1.0
+"""
+
 from func import compute_iou
 import pickle
 from tqdm.auto import tqdm

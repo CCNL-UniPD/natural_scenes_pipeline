@@ -1,3 +1,19 @@
+"""
+Description: This script integrates the Grounding DINO model with the Segment Anything Model (SAM) to process and analyze images from the MSCOCO dataset. 
+             The script loads annotations, predicts bounding boxes using DINO, and refines these results with SAM to generate masks for the detected objects.
+             It then computes various properties such as hull area, total area, and object numerosity for each image, and stores the results in a pickle file for further analysis.
+
+Main Features:
+1. Loads bounding box annotations from Grounding DINO predictions for MSCOCO images.
+2. Uses the Segment Anything Model (SAM) to generate segmentation masks for detected objects.
+3. Computes and stores additional metrics like total mask area, convex hull area, and object numerosity.
+4. Saves the enhanced results to a pickle file for easy reuse and further analysis.
+
+Author: Kuinan
+Date: 2024-09-01
+Version: 1.0
+"""
+
 import torch
 import pickle
 from GroundingDINO.groundingdino.util import box_ops

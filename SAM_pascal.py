@@ -1,3 +1,19 @@
+"""
+Description: This script integrates the Grounding DINO model with the Segment Anything Model (SAM) to process and analyze images from the PASCAL VOC dataset. 
+             The script loads precomputed Grounding DINO results, uses SAM to generate segmentation masks for detected objects, and calculates
+             metrics such as total area, convex hull area, image size, and numerosity of objects. The results are saved in a pickle file for further use.
+
+Main Features:
+1. Loads bounding box annotations from Grounding DINO predictions for PASCAL VOC images.
+2. Uses the Segment Anything Model (SAM) to generate segmentation masks for detected objects.
+3. Computes additional metrics such as total mask area, convex hull area, and object numerosity.
+4. Saves the enhanced results, including computed areas and numerosity, into a pickle file for further analysis.
+5. Processes the dataset incrementally, saving results periodically to avoid data loss.
+
+Author: Kuinan
+Date: 2024-09-01
+Version: 1.0
+"""
 import torch
 import pickle
 from GroundingDINO.groundingdino.util import box_ops

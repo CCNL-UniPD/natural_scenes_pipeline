@@ -1,3 +1,21 @@
+"""
+Description: This script uses the Gemini vision model from Vertex AI to perform object detection on images from the MSCOCO dataset.
+             It prompts the model to identify objects in each image by sending image URLs to the Gemini model. The results, including
+             detected objects, are stored in JSON files, with intermediate saves for large datasets. The script includes retry logic 
+             for failed requests and reprocessing of erroneous entries after the initial run.
+             
+Main Features:
+1. Asynchronously fetches images from URLs in the MSCOCO dataset and prompts the Gemini model to detect objects.
+2. Handles concurrency with asyncio and applies rate-limiting to avoid overloading the API.
+3. Supports retry logic for failed requests and reprocesses entries with errors.
+4. Saves intermediate and final results in JSON format, allowing safe recovery and progress tracking during large batch processing.
+5. Includes functionality to automatically retry and save responses for images that failed in the first attempt.
+
+Author: Kuinan
+Date: 2024-09-01
+Version: 1.0
+"""
+
 import vertexai
 from vertexai.preview.generative_models import GenerativeModel
 vertexai.init(project='your-project-id', location="location-close-to-you")

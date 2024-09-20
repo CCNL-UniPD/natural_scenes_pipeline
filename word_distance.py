@@ -1,3 +1,18 @@
+"""
+Description: This script processes object detection results from the GEMINI model by matching them with categories from the MSCOCO dataset using Word2Vec similarity. 
+             It loads GEMINI results, filters and replaces object names based on their similarity to MSCOCO categories using pre-trained Word2Vec embeddings. 
+             The final results are saved as a pickle file for further use.
+
+Main Features:
+1. Loads object detection results from GEMINI and MSCOCO category lists (instance and stuff annotations).
+2. Uses a pre-trained Word2Vec model to filter and replace words in GEMINI responses based on their similarity to MSCOCO categories.
+3. Supports removal of non-relevant words based on a separate category list (stuff categories).
+4. Saves the processed results, including original, filtered, and replaced words, in a pickle file for further analysis.
+
+Author: Kuinan
+Date: 2024-09-01
+Version: 1.0
+"""
 from gensim.models import KeyedVectors
 import json
 from tqdm.auto import tqdm

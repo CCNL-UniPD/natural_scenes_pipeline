@@ -1,3 +1,20 @@
+"""
+Description: This script uses the Gemini multimodal vision model from Vertex AI to detect objects in images from the PASCAL VOC dataset.
+             It processes images asynchronously using concurrency control, generates descriptions of objects in each image, and applies
+             safety configurations to filter out harmful content. The results are saved as a JSON file for further analysis.
+
+Main Features:
+1. Asynchronously loads and processes images from the PASCAL VOC dataset using the Gemini vision model.
+2. Applies a textual prompt to detect objects in images and returns the names of those objects.
+3. Implements concurrency control using semaphores to manage the number of tasks processed simultaneously.
+4. Implements retry logic with exponential backoff to handle errors during processing.
+5. Applies safety settings to filter out potentially harmful content during object detection.
+6. Saves the results in a JSON file for further use.
+
+Author: Kuinan
+Date: 2024-09-01
+Version: 1.0
+"""
 import vertexai
 from vertexai.preview.generative_models import GenerativeModel, Image, SafetySetting, HarmCategory,HarmBlockThreshold
 import asyncio

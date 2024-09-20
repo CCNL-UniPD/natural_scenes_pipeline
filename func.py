@@ -1,3 +1,11 @@
+"""
+Script Name: func.py
+Description: This script contains self-defined functions that may help the process of the pipeline.
+Author: Kuinan
+Date: 2024-09-01
+Version: 1.0
+"""
+
 from typing import Tuple
 import numpy as np
 import GroundingDINO.groundingdino.datasets.transforms as T
