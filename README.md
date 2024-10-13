@@ -43,7 +43,8 @@ With this repository, you can start from the very beginning of our pipeline, tha
 If you wish to start from the middle step or using the data from the paper, do following:
 1. Create a "Data" folder to store our data\
 `mkdir Data` 
-2. [Download](https://unipdit-my.sharepoint.com/:u:/g/personal/kuinan_hou_studenti_unipd_it/EQ2w1OnZejdAkq7qtLZs8pEB3EgOMy3pr2GVy05FJOyrFQ?e=5AvNJH) our data and unzip them into the folder you just created
+2. [Download](https://unipdit-my.sharepoint.com/personal/kuinan_hou_studenti_unipd_it/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkuinan%5Fhou%5Fstudenti%5Funipd%5Fit%2FDocuments%2FPRIN%20datasets%2FPsychological%20Research%20special%20issue%2FData%2Ezip&parent=%2Fpersonal%2Fkuinan%5Fhou%5Fstudenti%5Funipd%5Fit%2FDocuments%2FPRIN%20datasets%2FPsychological%20Research%20special%20issue&ga=1) 
+our data and unzip them into the folder you just created
 
 ## Data structure
 Responses from each model are stored in python dictionaries. The files are named by model_result_dataset.pkl or .json\
