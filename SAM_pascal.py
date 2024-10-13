@@ -49,12 +49,12 @@ im_paths = {os.path.splitext(file)[0]: os.path.join(image_folder, file) for file
 resultdir = '/Data/SAM_result_pascal.pkl'
 
 existing_rr = {}
-#THRESHOLD = 0.10
+
 # Process images and save results every 1000 images
 for idx, (image_id, dino_result) in enumerate(tqdm(rr.items())):
     image_path = im_paths[image_id]
     image_source, image_dino = load_image(image_path)
-    #filtered_boxes = [box for box, logit in zip(dino_result['boxes'], dino_result['logits']) if logit > THRESHOLD]
+    filtered_boxes = [box for box, logit in zip(dino_result['boxes'], dino_result['logits']) if logit > 0.22]
     filtered_boxes = dino_result['boxes']
     tensor_boxes = torch.tensor(filtered_boxes)
 

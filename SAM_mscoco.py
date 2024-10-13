@@ -62,7 +62,7 @@ existing_rr = {}
 for image_id, dino_result in tqdm(rr.items()):
     image_path = os.path.join(im_dir, image_filename[image_id])
     image_source, image_dino = load_image(image_path)
-    #filtered_boxes = [box for box, logit in zip(dino_result['boxes'], dino_result['logits']) if logit > THRESHOLD]
+    filtered_boxes = [box for box, logit in zip(dino_result['boxes'], dino_result['logits']) if logit > 0.22]
     filtered_boxes = dino_result['boxes']
     tensor_boxes = torch.tensor(filtered_boxes)
 
