@@ -49,7 +49,7 @@ print('G-dino loaded')
 
 # define directories
 image_folder = '.../pascal/VOCdevkit/VOC2012/JPEGImages' # modify with your path, either DINO or COCO
-prompt_dir = '/Data/GEMINI_result_pascal.json'
+prompt_dir = '/Data/postprocess_gemini_pascal.pkl' # remember to use the pos-processed prompts for DINO
 
 with open(prompt_dir, 'r') as f:
     prompts = json.load(f) 
