@@ -100,16 +100,43 @@ for im_path, filename in tqdm(zip(im_paths, filenames), total=len(im_paths)):
                 else:
                     keep[i] = False
 
+    # Get indices of boxes kept after NMS
+    keep_indices = torch.where(keep)[0]
+
+    if len(keep_indices) == 0:
+        continue  # Skip if no boxes remain after NMS
+
+    # transformed_frame is a tensor of shape (C, H, W)
+    _, H, W = transformed_frame.shape
+    image_area = H * W
+    # Get boxes after NMS
+    boxes_kept = stack_boxes[keep_indices]
+
+    # Compute areas of the boxes
+    box_widths = boxes_kept[:, 2] - boxes_kept[:, 0]
+    box_heights = boxes_kept[:, 3] - boxes_kept[:, 1]
+    box_areas = box_widths * box_heights
+
+    area_ratios = box_areas / image_area
+
+    # Keep boxes with area ratio <= 0.95
+    area_keep = area_ratios <= 0.95
+
+    # Get final indices after area filtering
+    final_indices = keep_indices[area_keep]
+
+    if len(final_indices) == 0:
+        continue  # Skip if no boxes remain after area filtering
+
     # Filter the results
-    filtered_boxes = [all_boxes[idx] for idx in torch.where(keep)[0]]
-    filtered_logits = [all_logits[idx] for idx in torch.where(keep)[0]]
-    filtered_phrases = [all_phrases[idx] for idx in torch.where(keep)[0]]
+    filtered_boxes = [all_boxes[idx] for idx in final_indices]
+    filtered_logits = [all_logits[idx] for idx in final_indices]
+    filtered_phrases = [all_phrases[idx] for idx in final_indices]
 
     # Store the results
     filtered_results[filename] = {
         'boxes': filtered_boxes,
         'logits': filtered_logits,
-        'phrases': filtered_phrases
-    }
+        'phrases': filtered_phrases}
 with open('/Data/DINO_result_pascal.pkl', 'wb') as f:
     pickle.dump(filtered_results, f)
