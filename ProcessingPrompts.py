@@ -22,6 +22,10 @@ Steps:
 Usage:
 - Modify file paths for the Word2Vec model, MSCOCO annotation files, and GEMINI result file as necessary.
 - Run the script to generate a cleaned version of the image caption data.
+
+Author: Kuinan
+Version: 1.1
+Date 2024/10/01
 """
 
 import json
