@@ -54,7 +54,7 @@ with open("Data\GEMINI_result_mscoco.json", 'r') as file:
 
 # Clean the GEMINI prompts
 prompts = {
-    im_id: re.findall(r'(?:[^,]+(?:,\s*|$))', data['response'].replace('77592:', '').strip())
+    im_id: re.findall(r'(?:[^,]+(?:,\s*|$))', data['response'].replace('77592:', '').replace('77592', '').strip())
     for im_id, data in tqdm(prompts.items()) if data['response']
 }
 # if with pascal, uncomment the following
